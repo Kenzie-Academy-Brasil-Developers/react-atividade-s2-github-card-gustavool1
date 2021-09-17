@@ -1,0 +1,117 @@
+form{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    width: 100%;
+}
+input[placeholder= "erro"]{
+    display: none;
+}
+input{
+    height: 30px;
+    width: inherit;
+    background-color: #282c34;
+    color: white;
+    border: 2px solid rgb(112, 109, 109);
+    height: 25px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+input:focus{
+    outline: none;
+    
+}
+ button{
+    background-color: none;
+    border: none;
+    font-size: 22px; 
+    background-color: #4c515e ;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s;
+    
+ }
+ 
+ form p {
+     width: 100%;
+     font-size: 16px;
+     margin: 5px;
+
+ }
+
+.gitinfo-container{
+    display: flex;
+    margin-top: 10%;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid ;
+    width: 90%;
+    border-radius: 5px;    
+    padding:10px
+}
+
+.gitinfo-container img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+@media screen and (min-width:768px){
+    input{
+        width: inherit;
+        background-color: #282c34;
+        color: white;
+        border: 2px solid rgb(112, 109, 109);
+        height: 22px;
+        font-size: 18px;
+        padding: 10px;
+        border-right: none;
+        margin: 0px;
+    }
+    .gitinfo-container img{
+        width: 10%;
+        height: 70px;
+        
+    }
+    button{
+        border-left: none;
+    }
+    .gitinfo-container{
+        justify-content: space-evenly;
+        box-sizing: border-box;
+        flex-direction: row;
+        
+        width: 70%;
+        margin: 20px;
+        min-height: 200px;
+        min-width: 768px;
+    }
+    section{
+        width: 66%;
+        margin: 0px 10px;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        
+    }
+    .gitinfo-container div{
+        margin: 5px;
+    }
+    
+    p {
+        margin: 0px;
+        width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+      }
+}
