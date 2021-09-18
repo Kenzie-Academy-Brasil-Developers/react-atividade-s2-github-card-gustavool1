@@ -1,11 +1,12 @@
 import { IoArrowRedo, IoCloseSharp } from "react-icons/io5";
 import { motion } from 'framer-motion'
+
 const Card = ({ rep,handleDeleteClick }) =>{
     return(
         <motion.div 
-        initial={{ x:-300}}
-        animate={{ x:0, duration:0.1 }}
-        key={rep.id} className="gitinfo-container">
+            initial={{ x:-300, opacity:0}}
+            animate={{ x:0, opacity:1 }}
+            key={rep.id} className="gitinfo-container">
             <img src={rep.owner.avatar_url} alt={rep.name} href='google.com'/>
             <section>
                 <div>
