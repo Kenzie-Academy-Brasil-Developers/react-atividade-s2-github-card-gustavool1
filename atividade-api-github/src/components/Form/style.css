@@ -62,7 +62,7 @@ input:focus{
 }
 .gitinfo-container:hover{
     box-shadow:5px 5px rgba(27, 27, 27, 0.486);
-    transform: scaleY(0.95);
+    transform: scaleY(0.50);
 }
 .gitinfo-container img{
     width: 150px;
@@ -70,6 +70,10 @@ input:focus{
 }
 svg{
     font-size: 30px;
+    cursor: pointer;
+}
+svg:hover{
+    color: grey;
 }
 a{
     color: white;
@@ -109,7 +113,7 @@ a:visited{
         min-width: 720px;
     }
     section{
-        width: 66%;
+        width: 100%;
         margin: 0px 10px;
         display: flex;
         justify-content:space-between;
@@ -127,4 +131,10 @@ a:visited{
         text-overflow: ellipsis;
         
       }
+    section div{
+        width: 33%;
+    }
+    section div:nth-child(3){
+        width: 10%;
+    }
 }

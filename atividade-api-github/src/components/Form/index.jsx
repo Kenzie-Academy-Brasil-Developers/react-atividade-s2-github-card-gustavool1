@@ -2,13 +2,14 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
-import { IoArrowRedo, IoCloseSharp } from "react-icons/io5";
+import Card from "./Card"
 import "./style.css"
 const Form = () =>{
     const [aswerApi, setAswerApi] = useState([])
     const [erroApi, setErroApi]   = useState(null)
     const [repeated, setRepeated] = useState(null)
     const [filtered, setFiltered] =  useState(null)
+    const [show, setShow]         = useState(null)
     const formScheme = yup.object().shape({
         rep: yup.string().required("Campo obrigatório").min(5, 'Minimo de digitos é 5')
     })
@@ -25,13 +26,17 @@ const Form = () =>{
                     setAswerApi([...aswerApi, response])
                     setErroApi(null)
                     setRepeated(false)
+                    setShow(false)
                     }if(filtered.length !==0){
                         setRepeated(true)
                     }
                 }else setErroApi(true)
         })
     }
-    console.log(aswerApi)
+    const handleDeleteClick = (id) =>{
+        const apagado = aswerApi.filter((elemento)=> elemento.id !== id)
+        setAswerApi(apagado)
+    }
     return(
         <>  
             <form onSubmit={handleSubmit(handleClick)}>
@@ -42,37 +47,14 @@ const Form = () =>{
                 {erroApi && <p>Repositório não encontrado</p>}
                 {repeated && <p>Não pode adicionar o mesmo repositório</p>}
             </form>
-            {aswerApi && 
+            {!show && 
                 aswerApi.map((resp)=>(
-                    <div key={resp.id} className="gitinfo-container">
-                        <img src={resp.owner.avatar_url} alt={resp.name} href='google.com'/>
-                        <section>
-                            <div>
-                                <p><strong>Nome</strong></p>
-                                <p>{resp.name}</p>
-                            </div>
-                            {resp.description ?(
-                                <>
-                                    <div className='second'>
-                                        <p><strong>Descrição</strong></p>
-                                        <p>{resp.description}</p>
-                                    </div>
-                                    <a href={resp.clone_url} target="_blank" alt='Ir para o repositório' rel='noreferrer'><IoArrowRedo/></a>
-                                    <IoCloseSharp/>
-                                </>
-                        ):(
-                            <>
-                            <div className='second'>
-                                <p><strong>Descrição</strong></p>
-                                <p>O repositório <strong>não possui descrição</strong></p>
-                            </div>
-                            <a href={resp.clone_url} target="_blank" alt='Ir para o repositório' rel='noreferrer'><IoArrowRedo/></a>
-                            <IoCloseSharp/> 
-                            </>
-                            
-                        )}
-                        </section>
-                    </div>
+                    <Card rep={resp} key={resp.id} setFiltered={setFiltered} handleDeleteClick={handleDeleteClick}/>
+                ))
+            }
+            {show &&
+                 filtered.map((resp)=>(
+                    <Card rep={resp} key={resp.id} setFiltered={setFiltered} handleDeleteClick={handleDeleteClick}/>
                 ))
             }
         </>
