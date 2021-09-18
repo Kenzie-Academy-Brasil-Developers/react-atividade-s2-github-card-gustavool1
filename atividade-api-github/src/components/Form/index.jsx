@@ -8,7 +8,6 @@ const Form = () =>{
     const [aswerApi, setAswerApi] = useState([])
     const [erroApi, setErroApi]   = useState(null)
     const [repeated, setRepeated] = useState(null)
-    const [filtered, setFiltered] =  useState(null)
     const [show, setShow]         = useState(null)
     const formScheme = yup.object().shape({
         rep: yup.string().required("Campo obrigatório").min(5, 'Minimo de digitos é 5')
@@ -52,11 +51,7 @@ const Form = () =>{
                     <Card rep={resp} key={resp.id} setFiltered={setFiltered} handleDeleteClick={handleDeleteClick}/>
                 ))
             }
-            {show &&
-                 filtered.map((resp)=>(
-                    <Card rep={resp} key={resp.id} setFiltered={setFiltered} handleDeleteClick={handleDeleteClick}/>
-                ))
-            }
+            
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { IoArrowRedo, IoCloseSharp } from "react-icons/io5";
 import { motion } from 'framer-motion'
-const Card = ({rep, setFiltered, handleDeleteClick}) =>{
+const Card = ({ rep,handleDeleteClick }) =>{
     return(
         <motion.div 
         initial={{ x:-300}}
